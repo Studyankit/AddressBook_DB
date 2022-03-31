@@ -11,33 +11,19 @@ namespace AddressBook_Db
     {
         public void dbCreation()
         {
-            DataTable dataTables = new DataTable();
-            dataTables.Columns.Add("firstName");
-            dataTables.Columns.Add("lastName");
-            dataTables.Columns.Add("address");
-            dataTables.Columns.Add("city");
-            dataTables.Columns.Add("state");
-            dataTables.Columns.Add("zipCode");
-            dataTables.Columns.Add("phoneNumber");
-            dataTables.Columns.Add("email");
-
-            dataTables.Rows.Add("Ankit", "Ghosh", "Dhnabad", "Jharkhand", "828171", "8219891889", "ank@gmail.com");
-            dataTables.Rows.Add("Nishanth", "Raj", "Bangalore", "Karnataka", "560099", "8726345101", "nish@gmail.com");
-            dataTables.Rows.Add("Raj", "Bakshi", "Kolkata", "West Bengal", "738377", "867211449", "raj@gmail.com");
-            dataTables.Rows.Add("Ritesh", "Kumar", "Patna", "Bihar", "989002", "9000986543", "rit@gmail.com");
-
-            DisplayContacts(dataTables);
-        }
-
-        public void DisplayContacts(DataTable dataTables)
-        {
-            var Names = from products in dataTables.AsEnumerable() select products.Field<string>("firstName");
-            Console.WriteLine("Name : ");
-            foreach (string n in Names)
+            List<Contact> contacts = new List<Contact>()
             {
-                Console.WriteLine(n);
+                new Contact(){ firstName="Ankit",lastName="Ghosh", address="Kendua",city="Dhanbad",state="jharkhand",zipCode=829911,phoneNumber=938725431,email="ank@gmail.com"},
+                new Contact(){ firstName="Nishanth",lastName="Raj", address="Hsr",city="Bangalore",state="Karnataka",zipCode=549499,phoneNumber=835245179,email="nish@gmail.com"},
+                new Contact(){ firstName="milan",lastName="Chatterjee", address="putki",city="Dhanbad",state="jharkhand",zipCode=829911,phoneNumber=879000122,email="mil@gmail.com"},
+                new Contact(){ firstName="Virender",lastName="yadav", address="patna",city="Patna",state="Bihar",zipCode=722399,phoneNumber=6887829290,email="vir@gmail.com"},
+            };
+            foreach (var list in contacts)
+            {
+                Console.WriteLine("Firstname:- " + list.firstName + " " + "Lastname:- " + list.lastName
+                    + " " + "address:- " + list.address + " " + "city:- " + list.city + " " + "state:- " + list.state +" "+"zipcode:-"+list.zipCode+" "+"phone no-"+list.phoneNumber+" "+"email id:-"+list.email);
             }
-
         }
+
     }
 }
